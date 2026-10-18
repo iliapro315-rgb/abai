@@ -89,7 +89,7 @@ import { MindARThree } from "mindar-image-three";
       const clock = new THREE.Clock();
       const loader = new GLTFLoader();
       loader.load(
-        "./assets/abai.glb",
+        "./model.glb",
         (gltf) => {
           currentModel = gltf.scene;
           currentModel.scale.set(0.45, 0.45, 0.45);
