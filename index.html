@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101813">
+  <title>Оживший портрет — Абай</title>
+  <link rel="stylesheet" href="./styles.css">
+  <!-- ES modules: MindAR 1.2.5 requires Three.js as an ES module dependency. -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+        "mindar-image-three": "https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">А</div>
+      <div>
+        <p class="eyebrow">ЛИТЕРАТУРА В ДОПОЛНЕННОЙ РЕАЛЬНОСТИ</p>
+        <h1>Оживший портрет</h1>
+      </div>
+      <span class="status" id="status">Готово к запуску</span>
+    </header>
+
+    <section class="intro" id="intro">
+      <p class="kicker">Знакомство с великим мыслителем</p>
+      <h2>Встретьтесь с <em>Абаем</em></h2>
+      <p class="intro-copy">Наведите камеру на подготовленный портрет Абая Кунанбаева. Когда изображение будет найдено, рядом с ним появится 3D-модель.</p>
+      <button class="primary" id="startButton">Включить камеру <span aria-hidden="true">↗</span></button>
+      <p class="hint">Камера работает только на HTTPS или localhost. Разрешите доступ, когда браузер спросит.</p>
+    </section>
+
+    <section class="camera-stage" id="cameraStage" hidden>
+      <div id="ar-container" class="ar-container"></div>
+      <div class="scan-frame" aria-hidden="true"><span></span></div>
+      <div class="scan-tip" id="scanTip">Наведите камеру на портрет Абая</div>
+      <div class="camera-controls">
+        <button class="control" id="stopButton">Завершить</button>
+        <button class="control" id="voiceButton" disabled>▶ Слушать рассказ</button>
+      </div>
+    </section>
+
+    <section class="bio-card" id="bioCard" hidden>
+      <div class="bio-label">ПОРТРЕТ РАСПОЗНАН</div>
+      <h2>Абай Кунанбаев</h2>
+      <p id="story">Здравствуйте! Меня зовут Абай Кунанбаев. Я казахский поэт, мыслитель, композитор и просветитель. Я призывал людей к знаниям, труду, честности и доброте.</p>
+      <div class="bio-actions">
+        <button class="primary" id="speakButton">▶ Послушать</button>
+        <button class="secondary" id="stopSpeechButton">Остановить голос</button>
+      </div>
+      <p class="small-note">Это синтезированная речь браузера, а не запись голоса Абая.</p>
+    </section>
+
+    <details class="help">
+      <summary>Как подготовить портрет для распознавания</summary>
+      <ol>
+        <li>Выберите чёткий портрет Абая с хорошим контрастом и множеством деталей.</li>
+        <li>Скомпилируйте изображение в файл <code>targets.mind</code> через MindAR Image Target Compiler.</li>
+        <li>Поместите <code>targets.mind</code> в эту же папку, рядом с <code>index.html</code>.</li>
+        <li>Добавьте 3D-модель в <code>assets/abai.glb</code>.</li>
+      </ol>
+      <p>Демонстрационный проект не содержит портрет, target-файл или готовую 3D-модель: их нужно добавить отдельно.</p>
+    </details>
+
+    <footer>Учебный AR-прототип · Абай Кунанбаев</footer>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
